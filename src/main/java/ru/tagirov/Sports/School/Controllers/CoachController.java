@@ -7,7 +7,8 @@ import ru.tagirov.Sports.School.Services.CoachServiceImpl;
 
 import java.util.List;
 
-@RestController("/api/coaches")
+@RestController
+@RequestMapping("/api/coaches")
 @AllArgsConstructor
 public class CoachController {
     private final CoachServiceImpl coachService;
