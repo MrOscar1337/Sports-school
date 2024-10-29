@@ -7,12 +7,12 @@ import java.time.LocalDate;
 
 @Data
 @Entity
-@Table(name = "Students")
+@Table(name = "students")
 public class Student {
     @Column(name = "student_id")
     @Id
     @GeneratedValue
-    Long id;
+    int id;
     @Column(name = "student_name")
     String firstName;
     @Column(name = "student_surname")

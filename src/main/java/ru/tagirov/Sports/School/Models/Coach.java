@@ -5,20 +5,26 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "Coaches")
+@Table(name = "coaches")
 public class Coach {
     @Column(name = "coach_id")
     @Id
     @GeneratedValue
-    Long id;
+    int id;
+
     @Column(name = "coach_name")
     String firstName;
+
     @Column(name = "coach_surname")
     String lastName;
-    @Column(name = "coach_patronymic")
+
+    @Column(name = "сoach_patronymic")
     String patronymic;
+
     @Column(name = "coach_email", unique = true)
     String email;
+
     @Column(name = "coach_sport_id")
-    Long sportId;
+    int sportId;
+
 }

@@ -1,24 +1,28 @@
 package ru.tagirov.Sports.School.Controllers;
 
 import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.tagirov.Sports.School.Models.Student;
 import ru.tagirov.Sports.School.Services.StudentServiceImpl;
 
 import java.util.List;
 
-@RestController
-@RequestMapping("/api/students")
+@Controller
+@RequestMapping("/students")
 @AllArgsConstructor
 public class StudentController{
     private final StudentServiceImpl studentService;
 
     @GetMapping
-    public List<Student> findAllStudents(){
-        return studentService.findAllStudents();
+    public String findAllStudents(Model model){
+    List<Student> students = studentService.findAllStudents();
+    model.addAttribute("students", students);
+        return "student-list";
     }
 
-    @GetMapping("save_student")
+    @PostMapping("save_student")
     public Student saveStudent(@RequestBody Student student){
         return studentService.saveStudent(student);
     }
