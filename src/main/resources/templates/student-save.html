@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title th:text="${title}"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+</head>
+<body>
+<header th:insert="blocks/header :: header"></header>
+<div class="container, mt-5 ms-5 mb-5 me-5">
+  <h1>Добавление нового студента</h1>
+  <h3>Заполните необходимые поля</h3>
+  <form action="/students/save_student" method="post">
+    <input type="text" name="firstName" placeholder="Имя" class="form-control"><br>
+    <input type="text" name="lastName" placeholder="Фамилия" class="form-control"><br>
+    <input type="text" name="patronymic" placeholder="Отчество" class="form-control"><br>
+    <input type="date" name="birth" placeholder="Дата рождения" class="form-control"><br>
+    <input type="text" name="email" placeholder="Адрес электронной почты" class="form-control"><br>
+    <button type="submit" class="btn btn-success">Добавить</button>
+  </form>
+</div>
+<div th:insert="blocks/footer :: footer"></div>
+</body>
+</html>
