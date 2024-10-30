@@ -1,6 +1,7 @@
 package ru.tagirov.Sports.School.Models;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.time.LocalDate;
@@ -11,7 +12,7 @@ import java.time.LocalDate;
 public class Student {
     @Column(name = "student_id")
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
     @Column(name = "student_name")
     String firstName;
@@ -22,6 +23,16 @@ public class Student {
     @Column(name = "student_email", unique = true)
     String email;
     @Column(name = "student_birth")
-    @Transient
     LocalDate birth;
+
+    public Student(String firstName, String lastName, String patronymic, String email, LocalDate birth) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.patronymic = patronymic;
+        this.email = email;
+        this.birth = birth;
+    }
+
+    public Student() {
+    }
 }

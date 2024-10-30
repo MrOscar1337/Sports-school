@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import ru.tagirov.Sports.School.Models.Student;
 import ru.tagirov.Sports.School.Services.StudentServiceImpl;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Controller
@@ -22,15 +23,27 @@ public class StudentController{
         return "student-list";
     }
 
+    @GetMapping("save_student")
+    public String addStudent(Model model){
+        return "student-save";
+    }
+
     @PostMapping("save_student")
-    public Student saveStudent(@RequestBody Student student){
-        return studentService.saveStudent(student);
+    public String saveStudent(@RequestParam String firstName, @RequestParam String lastName,
+    @RequestParam String patronymic, @RequestParam String email, @RequestParam LocalDate birth,
+    Model model){
+        Student student = new Student(firstName, lastName, patronymic, email, birth);
+        studentService.saveStudent(student);
+        return "redirect:/students";
     }
 
     @GetMapping("/{email}")
-    public Student findByEmail(@PathVariable String email){
-        return studentService.findByEmail(email);
+    public String studentInfo(@PathVariable String email, Model model){
+       Student student = studentService.findByEmail(email);
+       model.addAttribute("student",student);
+        return "student-info";
     }
+
 
     @PutMapping("update_student")
     public Student updateStudent(Student student){
