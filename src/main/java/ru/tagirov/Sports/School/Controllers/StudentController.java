@@ -44,10 +44,18 @@ public class StudentController{
         return "student-info";
     }
 
+    @GetMapping("/{email}/update_student")
+    public String updateStudentForm(@PathVariable String email, Model model){
+        Student student = studentService.findByEmail(email);
+        model.addAttribute("student",student);
+        return "student-update";
+    }
 
-    @PutMapping("update_student")
-    public Student updateStudent(Student student){
-        return studentService.updateStudent(student);
+    @PostMapping("/{email}/update_student")
+    public String updateStudent(@PathVariable String email, Model model){
+        Student student = studentService.findByEmail(email);
+        studentService.updateStudent(student);
+        return "redirect:/students";
     }
 
     @DeleteMapping("delete_student/{email}")
