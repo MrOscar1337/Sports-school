@@ -52,8 +52,15 @@ public class StudentController{
     }
 
     @PostMapping("/{email}/update_student")
-    public String updateStudent(@PathVariable String email, Model model){
+    public String updateStudent(@RequestParam String firstName, @RequestParam String lastName,
+                                @RequestParam String patronymic, @RequestParam(value = "email") String email, @RequestParam LocalDate birth,
+                                Model model){
         Student student = studentService.findByEmail(email);
+        student.setFirstName(firstName);
+        student.setLastName(lastName);
+        student.setPatronymic(patronymic);
+        student.setEmail(email);
+        student.setBirth(birth);
         studentService.updateStudent(student);
         return "redirect:/students";
     }
