@@ -65,8 +65,10 @@ public class StudentController{
         return "redirect:/students";
     }
 
-    @DeleteMapping("delete_student/{email}")
-    public void deleteStudent(@PathVariable String email){
-        studentService.deleteByEmail(email);
+    @PostMapping("/{email}/delete")
+    public String deleteStudent(@PathVariable String email, Model model){
+        Student student = studentService.findByEmail(email);
+        studentService.deleteByEmail(student);
+        return "redirect:/students";
     }
 }

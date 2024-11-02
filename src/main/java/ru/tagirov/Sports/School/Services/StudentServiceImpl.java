@@ -32,7 +32,7 @@ public class StudentServiceImpl implements StudentService{
     }
 
     @Override
-    public void deleteByEmail(String email) {
-        studentRepository.deleteByEmail(email);
+    public void deleteByEmail(Student student) {
+        studentRepository.delete(student);
     }
 }

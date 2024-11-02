@@ -12,9 +12,13 @@
         <p th:text="'ФИО: ' + ${student.lastName} + ' ' + ${student.firstName} + ' ' + ${student.patronymic}"/>
         <p th:text="'Дата рождения: '+ ${student.birth}"/>
         <p th:text="'Электронная почта: ' + ${student.email}"/>
+        <a th:href="'/students/' + ${student.email} + '/update_student'" class="btn btn-warning">Редактировать</a><br><br>
+        <form th:action="'/students/' + ${student.email} + '/delete'" method="post">
+            <button class="btn btn-warning" type="submit">Удалить</button>
+        </form>
     </div>
 </div>
-<a th:href="'/students/' + ${student.email} + '/update_student'" class="btn btn-warning, mt-5 ms-5 mb-5 me-5">Редактировать</a><br><br>
+
 <div th:insert="blocks/footer :: footer"></div>
 </body>
 </html>

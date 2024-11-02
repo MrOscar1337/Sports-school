@@ -9,5 +9,5 @@ public interface StudentService {
     Student saveStudent(Student student);
     Student updateStudent(Student student);
     Student findByEmail(String email);
-    void deleteByEmail(String email);
+    void deleteByEmail(Student student);
 }
