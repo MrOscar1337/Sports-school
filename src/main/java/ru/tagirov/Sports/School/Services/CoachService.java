@@ -9,5 +9,5 @@ public interface CoachService {
     Coach saveCoach(Coach coach);
     Coach updateCoach(Coach coach);
     Coach findByEmail(String email);
-    void deleteByEmail(String email);
+    void deleteByEmail(Coach coach);
 }

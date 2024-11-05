@@ -32,7 +32,7 @@ public class CoachServiceImpl implements CoachService{
     }
 
     @Override
-    public void deleteByEmail(String email) {
-        coachRepository.deleteByEmail(email);
+    public void deleteByEmail(Coach coach) {
+        coachRepository.delete(coach);
     }
 }
